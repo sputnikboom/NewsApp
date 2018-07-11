@@ -44,6 +44,9 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         NewsItem currentNewsItem = getItem(position);
 
+        TextView sectionTextView = newsItemView.findViewById(R.id.section);
+        sectionTextView.setText(currentNewsItem.getSection());
+
         TextView storyTitleTextView = newsItemView.findViewById(R.id.headline);
         storyTitleTextView.setText(currentNewsItem.getStoryTitle());
 
@@ -58,8 +61,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         TextView dateTextView = newsItemView.findViewById(R.id.date);
         dateTextView.setText(currentNewsItem.getDate());
 
-        TextView sectionTextView = newsItemView.findViewById(R.id.section);
-        sectionTextView.setText(currentNewsItem.getSection());
+
 
         return newsItemView;
     }

@@ -6,8 +6,8 @@ package com.example.rachael.newsapp;
 
 public class NewsItem {
 
-    private String mStoryTitle;
     private String mSection;
+    private String mStoryTitle;
     private String mAuthorName;
     private String mDate;
     private String mUrl;
@@ -21,20 +21,20 @@ public class NewsItem {
      * @param url is the url link to the article on the guardian's website
      */
 
-    public NewsItem(String storyTitle, String section, String authorName, String date, String url) {
-        mStoryTitle = storyTitle;
+    public NewsItem(String section, String storyTitle, String authorName, String date, String url) {
         mSection = section;
+        mStoryTitle = storyTitle;
         mAuthorName = authorName;
         mDate = date;
         mUrl = url;
     }
 
-    public String getStoryTitle() {
-        return mStoryTitle;
-    }
-
     public String getSection() {
         return mSection;
+    }
+
+    public String getStoryTitle() {
+        return mStoryTitle;
     }
 
     public String getAuthorName() {

@@ -16,7 +16,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<NewsItem>> {
 
     private static final String LOG_TAG = MainActivity.class.getName();
-    private static final String API_KEY = <YOUR_API_KEY_HERE>;
+    private static final String API_KEY = "YOUR_API_KEY_HERE";
     private static final String API_REQUEST_URL = "https://content.guardianapis.com/search?q=leeds&show-tags=contributor&api-key=" + API_KEY;
     private static final int NEWS_ITEM_LOADER_ID = 1;
     private NewsItemAdapter mAdapter;

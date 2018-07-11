@@ -136,10 +136,10 @@ public final class QueryUtils {
 
                 JSONObject currentNewsItem = newsItemArray.getJSONObject(i);
 
+                String section = currentNewsItem.getString("sectionName");
                 String storyTitle = currentNewsItem.getString("webTitle");
                 String url = currentNewsItem.getString("webUrl");
                 String date = currentNewsItem.getString("webPublicationDate");
-                String section = currentNewsItem.getString("sectionName");
                 String authorName;
 
                 JSONArray tags = currentNewsItem.getJSONArray("tags");
@@ -154,7 +154,7 @@ public final class QueryUtils {
 
                 // TODO return date in a better format
 
-                NewsItem newsItem = new NewsItem(storyTitle, authorName, date, section, url);
+                NewsItem newsItem = new NewsItem(section, storyTitle, authorName, date, url);
                 newsItems.add(newsItem);
             }
         } catch (JSONException e) {

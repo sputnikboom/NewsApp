@@ -3,31 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="section"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/black"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingLeft="8dp"/>
 
     <TextView
         android:id="@+id/headline"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        tools:text="headline"/>
+        tools:text="headline" />
 
 
     <TextView
         android:id="@+id/author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="author"/>
+        tools:text="author" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="date"/>
+        tools:text="date" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/section"
-        tools:text="section"/>
+
 
 </LinearLayout>
