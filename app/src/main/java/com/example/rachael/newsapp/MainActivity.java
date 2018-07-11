@@ -2,8 +2,12 @@ package com.example.rachael.newsapp;
 
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -12,7 +16,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<NewsItem>> {
 
     private static final String LOG_TAG = MainActivity.class.getName();
-    private static final String API_REQUEST_URL = "https://content.guardianapis.com/search?q=leeds&show-tags=contributor&api-key=<YOUR_API_KEY_HERE>";
+    private static final String API_KEY = <YOUR_API_KEY_HERE>;
+    private static final String API_REQUEST_URL = "https://content.guardianapis.com/search?q=leeds&show-tags=contributor&api-key=" + API_KEY;
     private static final int NEWS_ITEM_LOADER_ID = 1;
     private NewsItemAdapter mAdapter;
 
@@ -26,6 +31,17 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         newsItemListView.setAdapter(mAdapter);
 
         //TODO: set onclick listener to push intent to open url in browser
+        newsItemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                NewsItem currentNewsItem = mAdapter.getItem(position);
+                Uri newsItemUri = Uri.parse(currentNewsItem.getUrl());
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsItemUri);
+                startActivity(websiteIntent);
+            }
+        });
+
+
         //TODO: empty state message
         //TODO: progress bar/spinner
         //TODO: connectivity message
