@@ -128,21 +128,31 @@ public final class QueryUtils {
         ArrayList<NewsItem> newsItems = new ArrayList<>();
 
         try {
-            JSONObject baseJsonResponse = new JSONObject(newsItemJSON);
-            JSONArray newsItemArray = baseJsonResponse.getJSONArray("results");
+            JSONObject rootJson = new JSONObject(newsItemJSON);
+            JSONObject responseJson = rootJson.getJSONObject("response");
+            JSONArray newsItemArray = responseJson.getJSONArray("results");
 
             for (int i = 0; i < newsItemArray.length(); i++) {
 
                 JSONObject currentNewsItem = newsItemArray.getJSONObject(i);
-                JSONObject tags = currentNewsItem.getJSONObject("tags");
 
                 String storyTitle = currentNewsItem.getString("webTitle");
                 String url = currentNewsItem.getString("webUrl");
                 String date = currentNewsItem.getString("webPublicationDate");
-                String section = currentNewsItem.getString("sectionNAme");
-                String author = tags.getString("webTitle");
+                String section = currentNewsItem.getString("sectionName");
+                String authorName = "";
 
-                NewsItem newsItem = new NewsItem(storyTitle, url, author, date, section);
+//                JSONObject authorTags = currentNewsItem.getJSONObject("tags");
+//
+//                if (authorTags.length() > 0) {
+//                    authorName = authorTags.getString("webTitle");
+//                } else {
+//                    authorName = "No author details available";
+//                }
+
+                // TODO return date in a better format
+
+                NewsItem newsItem = new NewsItem(storyTitle, url, date, section, authorName);
                 newsItems.add(newsItem);
             }
         } catch (JSONException e) {
