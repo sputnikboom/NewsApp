@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     private static final String API_REQUEST_URL = "https://content.guardianapis.com/search?q=leeds&show-tags=contributor&api-key=" + API_KEY;
     private static final int NEWS_ITEM_LOADER_ID = 1;
     private NewsItemAdapter mAdapter;
+    private TextView mEmptyStateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,11 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             }
         });
 
+        mEmptyStateTextView = findViewById(R.id.empty_message);
+        newsItemListView.setEmptyView(mEmptyStateTextView);
 
         //TODO: empty state message
-        //TODO: progress bar/spinner
+        //TODO: progress bar/spinner???
         //TODO: connectivity message
 
         LoaderManager loaderManager = getLoaderManager();
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(android.content.Loader<List<NewsItem>> loader, List<NewsItem> newsItems) {
+        mEmptyStateTextView.setText(R.string.no_news);
         mAdapter.clear();
         if (newsItems != null && !newsItems.isEmpty()) {
             mAdapter.addAll(newsItems);
