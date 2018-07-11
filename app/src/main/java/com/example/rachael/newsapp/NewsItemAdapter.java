@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * {@link NewsItemAdapter} creates a list item layout for each news story in the list of
@@ -47,6 +50,11 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         TextView authorNameTextView = newsItemView.findViewById(R.id.author);
         authorNameTextView.setText(currentNewsItem.getAuthorName());
 
+//        Date dateObject = new Date(currentNewsItem.getDate());
+//        TextView dateTextView = newsItemView.findViewById(R.id.date);
+//        String formattedDate = formatDate(dateObject);
+//        dateTextView.setText(formattedDate);
+
         TextView dateTextView = newsItemView.findViewById(R.id.date);
         dateTextView.setText(currentNewsItem.getDate());
 
@@ -55,5 +63,10 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         return newsItemView;
     }
+
+//    private String formatDate(Date dateObject) {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ'", Locale.UK);
+//        return dateFormat.format(dateObject);
+//    }
 }
 

@@ -140,19 +140,21 @@ public final class QueryUtils {
                 String url = currentNewsItem.getString("webUrl");
                 String date = currentNewsItem.getString("webPublicationDate");
                 String section = currentNewsItem.getString("sectionName");
-                String authorName = "";
+                String authorName;
 
-//                JSONObject authorTags = currentNewsItem.getJSONObject("tags");
-//
-//                if (authorTags.length() > 0) {
-//                    authorName = authorTags.getString("webTitle");
-//                } else {
-//                    authorName = "No author details available";
-//                }
+                JSONArray tags = currentNewsItem.getJSONArray("tags");
+
+                if (tags.length() > 0) {
+                    JSONObject authorTags = tags.getJSONObject(0);
+                    authorName = authorTags.getString("webTitle");
+                    Log.e(LOG_TAG, "authors name is" + authorName);
+                } else {
+                    authorName = "No author details available";
+                }
 
                 // TODO return date in a better format
 
-                NewsItem newsItem = new NewsItem(storyTitle, url, date, section, authorName);
+                NewsItem newsItem = new NewsItem(storyTitle, authorName, date, section, url);
                 newsItems.add(newsItem);
             }
         } catch (JSONException e) {
