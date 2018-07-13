@@ -42,7 +42,8 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
             newsItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
-        NewsItem currentNewsItem = getItem(position);
+        NewsItem currentNewsItem;
+        currentNewsItem = getItem(position);
 
         TextView sectionTextView = newsItemView.findViewById(R.id.section);
         sectionTextView.setText(currentNewsItem.getSection());
@@ -52,11 +53,6 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         TextView authorNameTextView = newsItemView.findViewById(R.id.author);
         authorNameTextView.setText(currentNewsItem.getAuthorName());
-
-//        Date dateObject = new Date(currentNewsItem.getDate());
-//        TextView dateTextView = newsItemView.findViewById(R.id.date);
-//        String formattedDate = formatDate(dateObject);
-//        dateTextView.setText(formattedDate);
 
         TextView dateTextView = newsItemView.findViewById(R.id.date);
         dateTextView.setText(currentNewsItem.getDate());

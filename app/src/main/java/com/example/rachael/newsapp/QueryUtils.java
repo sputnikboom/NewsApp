@@ -14,8 +14,12 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -139,22 +143,34 @@ public final class QueryUtils {
                 String section = currentNewsItem.getString("sectionName");
                 String storyTitle = currentNewsItem.getString("webTitle");
                 String url = currentNewsItem.getString("webUrl");
+
                 String date = currentNewsItem.getString("webPublicationDate");
-                String authorName;
+
+                // formatting the date
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.UK);
+                Date newDate = null;
+                try {
+                    newDate = format.parse(date);
+                } catch (ParseException e) {
+                    Log.e(LOG_TAG, "error in formatting the date", e);
+                }
+                String finalDate = formatDate(newDate);
+
+                String authorName = "By ";
 
                 JSONArray tags = currentNewsItem.getJSONArray("tags");
 
                 if (tags.length() > 0) {
                     JSONObject authorTags = tags.getJSONObject(0);
-                    authorName = authorTags.getString("webTitle");
+                    authorName += authorTags.getString("webTitle");
                     Log.e(LOG_TAG, "authors name is" + authorName);
                 } else {
-                    authorName = "No author details available";
+                    authorName += "The Guardian";
                 }
 
                 // TODO return date in a better format
 
-                NewsItem newsItem = new NewsItem(section, storyTitle, authorName, date, url);
+                NewsItem newsItem = new NewsItem(section, storyTitle, authorName, finalDate, url);
                 newsItems.add(newsItem);
             }
         } catch (JSONException e) {
@@ -164,5 +180,10 @@ public final class QueryUtils {
         return newsItems;
     }
 
+    private static String formatDate(Date date) {
+        SimpleDateFormat dateToFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.UK);
+        return dateToFormat.format(date);
+    }
 
 }
+

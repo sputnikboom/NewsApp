@@ -2,7 +2,10 @@ package com.example.rachael.newsapp;
 
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         mAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
         newsItemListView.setAdapter(mAdapter);
 
-        //TODO: set onclick listener to push intent to open url in browser
         newsItemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -45,13 +47,15 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         mEmptyStateTextView = findViewById(R.id.empty_message);
         newsItemListView.setEmptyView(mEmptyStateTextView);
-
-        //TODO: empty state message
-        //TODO: progress bar/spinner???
-        //TODO: connectivity message
-
-        LoaderManager loaderManager = getLoaderManager();
-        loaderManager.initLoader(NEWS_ITEM_LOADER_ID, null, this);
+        
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            LoaderManager loaderManager = getLoaderManager();
+            loaderManager.initLoader(NEWS_ITEM_LOADER_ID, null, this);
+        } else {
+            mEmptyStateTextView.setText(R.string.connection_error);
+        }
     }
 
     @Override
@@ -60,7 +64,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     }
 
     @Override
-    public void onLoadFinished(android.content.Loader<List<NewsItem>> loader, List<NewsItem> newsItems) {
+    public void onLoadFinished
+            (android.content.Loader<List<NewsItem>> loader, List<NewsItem> newsItems) {
         mEmptyStateTextView.setText(R.string.no_news);
         mAdapter.clear();
         if (newsItems != null && !newsItems.isEmpty()) {
