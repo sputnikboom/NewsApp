@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -181,7 +182,7 @@ public final class QueryUtils {
     }
 
     private static String formatDate(Date date) {
-        SimpleDateFormat dateToFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.UK);
+        SimpleDateFormat dateToFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.UK);
         return dateToFormat.format(date);
     }
 

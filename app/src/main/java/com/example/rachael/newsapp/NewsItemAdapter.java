@@ -61,10 +61,5 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         return newsItemView;
     }
-
-//    private String formatDate(Date dateObject) {
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ'", Locale.UK);
-//        return dateFormat.format(dateObject);
-//    }
 }
 
