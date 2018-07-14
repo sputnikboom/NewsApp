@@ -29,7 +29,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
      * @param newsItems is the list of news stories, which provide data for the adapter
      */
 
-    public NewsItemAdapter(Context context, ArrayList<NewsItem> newsItems) {
+    private NewsItemAdapter(Context context, ArrayList<NewsItem> newsItems) {
         super(context, 0, newsItems);
     }
 
@@ -56,8 +56,6 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         TextView dateTextView = newsItemView.findViewById(R.id.date);
         dateTextView.setText(currentNewsItem.getDate());
-
-
 
         return newsItemView;
     }

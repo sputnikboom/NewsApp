@@ -16,7 +16,7 @@ public class NewsItemLoader extends AsyncTaskLoader<List<NewsItem>> {
      *                @param url is the url to access data from
      */
 
-    public NewsItemLoader(Context context, String url) {
+    private NewsItemLoader(Context context, String url) {
         super(context);
         mUrl = url;
     }
@@ -32,8 +32,7 @@ public class NewsItemLoader extends AsyncTaskLoader<List<NewsItem>> {
             return null;
         }
 
-        List<NewsItem> newsItems = QueryUtils.fetchNewsData(mUrl);
-        return newsItems;
+        return QueryUtils.fetchNewsData(mUrl);
     }
 }
 

@@ -48,9 +48,7 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem encountered making the HTTP request.", e);
         }
 
-        List<NewsItem> newsItems = extractFeaturesFromJson(jsonResponse);
-
-        return newsItems;
+        return extractFeaturesFromJson(jsonResponse);
     }
 
     /**
@@ -125,7 +123,7 @@ public final class QueryUtils {
     /**
      * returns a list of {@link NewsItem} objects that has been created from parsing the JSON response
      */
-    public static List<NewsItem> extractFeaturesFromJson(String newsItemJSON) {
+    private static List<NewsItem> extractFeaturesFromJson(String newsItemJSON) {
         if (TextUtils.isEmpty(newsItemJSON)) {
             return null;
         }
@@ -153,7 +151,7 @@ public final class QueryUtils {
                 try {
                     newDate = format.parse(date);
                 } catch (ParseException e) {
-                    Log.e(LOG_TAG, "error in formatting the date", e);
+                    Log.e(LOG_TAG, "error encountered when formatting the date", e);
                 }
                 String finalDate = formatDate(newDate);
 
@@ -164,12 +162,9 @@ public final class QueryUtils {
                 if (tags.length() > 0) {
                     JSONObject authorTags = tags.getJSONObject(0);
                     authorName += authorTags.getString("webTitle");
-                    Log.e(LOG_TAG, "authors name is" + authorName);
                 } else {
                     authorName += "The Guardian";
                 }
-
-                // TODO return date in a better format
 
                 NewsItem newsItem = new NewsItem(section, storyTitle, authorName, finalDate, url);
                 newsItems.add(newsItem);
