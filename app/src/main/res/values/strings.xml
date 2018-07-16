@@ -4,4 +4,8 @@
     <string name="connection_error">Unable to connect to internet\nplease check network settings</string>
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">News Settings</string>
+    <string name="settings_location_label">Location/City</string>
+    <string name="settings_location_key" translatable="false">location</string>
+    <string name="settings_location_default" translatable="false">Leeds</string>
+    <string name="location_hint">Eg. Manchester</string>
 </resources>
