@@ -29,7 +29,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
      * @param newsItems is the list of news stories, which provide data for the adapter
      */
 
-    private NewsItemAdapter(Context context, ArrayList<NewsItem> newsItems) {
+    NewsItemAdapter(Context context, ArrayList<NewsItem> newsItems) {
         super(context, 0, newsItems);
     }
 

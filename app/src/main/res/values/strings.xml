@@ -2,4 +2,6 @@
     <string name="app_name">News App</string>
     <string name="no_news">No news stories available\nplease try again later</string>
     <string name="connection_error">Unable to connect to internet\nplease check network settings</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
 </resources>
