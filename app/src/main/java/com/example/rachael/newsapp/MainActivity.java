@@ -71,6 +71,11 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
                 getString(R.string.settings_subject_key),
                 getString(R.string.settings_subject_default));
 
+        String orderBy  = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
+
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(API_REQUEST_URL);
 
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("q", getSubject);
         uriBuilder.appendQueryParameter("api-key", API_KEY);
+        uriBuilder.appendQueryParameter("order-by", orderBy);
 
         // Return the completed uri
         return new NewsItemLoader(this, uriBuilder.toString());

@@ -4,8 +4,20 @@
     <string name="connection_error">Unable to connect to internet\nplease check network settings</string>
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">News Settings</string>
-    <string name="settings_subject_label">News Topic</string>
-    <string name="settings_subject_key" translatable="false">Subject</string>
+    <string name="settings_subject_label">Subject</string>
+    <string name="settings_subject_key" translatable="false">subject</string>
     <string name="settings_subject_default" translatable="false">Leeds</string>
-    <string name="location_hint">eg. \'Manchester\', \'Goldfish\', \'Cooking\'</string>
+    <string name="field_hint">eg. Manchester, Goldfish, Socialism</string>
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">Most Recent</string>
+
+    <!-- Label for order-by newest first -->
+    <string name="settings_order_by_newest_label">Most Recent</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+
+    <!-- Label for order-by oldest first -->
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
 </resources>
