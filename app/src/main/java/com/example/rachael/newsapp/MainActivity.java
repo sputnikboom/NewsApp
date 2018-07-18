@@ -8,7 +8,9 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.v4.os.BuildCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,8 +26,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<NewsItem>> {
 
     private static final String LOG_TAG = MainActivity.class.getName();
-    private static final String API_KEY = "YOUR_API_KEY_HERE";
-    static final String API_REQUEST_URL = "https://content.guardianapis.com/search?";
+    private static final String API_REQUEST_URL = "https://content.guardianapis.com/search?";
+    private static final String API_KEY = BuildConfig.ApiKey;
     private static final int NEWS_ITEM_LOADER_ID = 1;
     private NewsItemAdapter mAdapter;
     private TextView mEmptyStateTextView;

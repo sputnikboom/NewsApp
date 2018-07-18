@@ -11,13 +11,13 @@
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">Most Recent</string>
+    <string name="settings_order_by_default" translatable="false">newest</string>
 
     <!-- Label for order-by newest first -->
     <string name="settings_order_by_newest_label">Most Recent</string>
     <string name="settings_order_by_newest_value" translatable="false">newest</string>
 
-    <!-- Label for order-by oldest first -->
+    <!-- Label for order-by relevance first -->
     <string name="settings_order_by_relevance_label">Relevance</string>
     <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
 </resources>
